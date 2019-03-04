@@ -4,7 +4,9 @@
   <p>Description  : <%= @item.description %> </p>
   <p><img src="<%=@item.img_link%>" alt="Kitten" style="width:auto;"> <p>
   <p class="h3 mb-5">Prix : <%=@item.price%> </p>
-  <button type="button" class="btn btn-success"> Passer la commande !</button>
+  <%if user_signed_in? == true%>
+    <%= link_to "Ajouter au panier",cart_items_path(cart_id: Cart.find_by(user_id: current_user.id), item_id: @item.id), class:"btn btn-success", method: "post" %>
+  <%end%>
   <br>
   <br>
 <%= link_to "Retourner sur la page d'accueil", root_path, class:"btn btn-outline-secondary"%>

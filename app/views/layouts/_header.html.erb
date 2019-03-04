@@ -18,6 +18,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <% if user_signed_in? %>
             <%= link_to "Mon Profil", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Mon Panier", cart_path( Cart.find_by(user_id: current_user.id)), class: "dropdown-item" %>
             <%= link_to "Se déconnecter", destroy_user_session_path, class: "dropdown-item", method: :delete %>
           <% else %>
             <%= link_to "S'inscrire", new_user_registration_path, class: "dropdown-item" %>
