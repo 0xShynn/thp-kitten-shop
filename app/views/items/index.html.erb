@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Accueil</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-md-4">
+        <div class="card mb-4 text-center">
+          <div class="card-body">
+            <img src="<%=item.img_link%>" >        
+            <h5 class="card-title mt-3"><%= item.name %></h5>
+            <p class="card-text"><%= item.price %> $</p>
+            <p class="card-text"> <%= item.description %>  </p>
+            <%= link_to "En savoir plus", item_path(item.id), class: 'btn btn-primary btn-sm' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+</div>
+
+
+</body>
+</html>
+
+

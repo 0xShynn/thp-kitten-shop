@@ -1,0 +1,11 @@
+
+<div class="container my-5 text-center">
+  <h1><%= @item.name %></h1>
+  <p>Description  : <%= @item.description %> </p>
+  <p><img src="<%=@item.img_link%>" alt="Kitten" style="width:auto;"> <p>
+  <p class="h3 mb-5">Prix : <%=@item.price%> </p>
+  <button type="button" class="btn btn-success"> Passer la commande !</button>
+  <br>
+  <br>
+<%= link_to "Retourner sur la page d'accueil", root_path, class:"btn btn-outline-secondary"%>
+</div>
