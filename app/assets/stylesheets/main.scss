@@ -4,7 +4,11 @@
   h2 {
     margin-bottom: 1em;
   } 
-} 
+}
+
+a, input {
+  outline: none;
+}
 
 .footer {
   background-color: #f5f5f5;

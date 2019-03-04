@@ -1,0 +1,9 @@
+<div class="">
+  <div class="container bg-white text-center p-5 my-5 rounded">
+    
+    <h1> <%= current_user.first_name %> <%= current_user.last_name %> </h1>
+    <h2 class="h3"> <%= current_user.email %></h2>
+    <p class="h3 my-5"> <%= current_user.first_name %> </p>
+    <%= link_to "Modifier ses informations importantes", edit_user_registration_path, class:"btn btn-outline-primary" %>
+  </div>
+</div>
