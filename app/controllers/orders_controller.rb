@@ -37,11 +37,6 @@ class OrdersController < ApplicationController
           currency: 'eur',
         })
 
-<<<<<<< HEAD
-    order.save
-    
-    redirect_to root_path
-=======
   @order.cart = @cart
   @order.user = current_user
   
@@ -52,7 +47,6 @@ class OrdersController < ApplicationController
       flash[:error] = "Ta commande n'a pas été validée :("
       render :new
   end
->>>>>>> 248a07ba762521ff027a07d8e6bef2ee628955fb
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
