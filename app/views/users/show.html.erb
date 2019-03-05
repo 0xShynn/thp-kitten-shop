@@ -4,6 +4,17 @@
     <h1> <%= current_user.first_name %> <%= current_user.last_name %> </h1>
     <h2 class="h3"> <%= current_user.email %></h2>
     <p class="h3 my-5"> <%= current_user.first_name %> </p>
+    <h3>Avatar actuel</h3>
+      <%if @user.avatar.attached?%>
+      <%= image_tag @user.avatar, alt: 'avatar' %>
+      <%else%>
+      <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+      <%end%>
+      <h3>Changer d'avatar ?</h3>
+        <%= form_tag user_avatars_path(@user), multipart: true do %>
+        <%= file_field_tag :avatar %>
+        <%= submit_tag "mettre à jour" %>
+        <% end %>
     <%= link_to "Modifier ses informations importantes", edit_user_registration_path, class:"btn btn-outline-primary" %>
   </div>
 </div>
