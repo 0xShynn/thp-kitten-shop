@@ -52,8 +52,7 @@ class OrdersController < ApplicationController
         })    
 
     order.save
-    puts "$" * 60
-    puts "Commande créée"
+    
     redirect_to root_path
 
   rescue Stripe::CardError => e
