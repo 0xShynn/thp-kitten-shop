@@ -2,21 +2,6 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-<<<<<<< HEAD
-    @cart = @order.cart
-
-    @cart_items = CartItem.where(cart_id: @cart.id)
-    
-    @total = 0.00
-    @cart_items.each do |cart_item|
-      @total = cart_item.item.price + @total
-    end
- @total.save
-  end
-
-  def new
-    
-=======
   end
 
   def new
@@ -25,7 +10,6 @@ class OrdersController < ApplicationController
     @cart_items = @order.find_cart_items_of_the_cart(@cart)
     @total = @order.total_amount_order(@cart_items)
 
->>>>>>> delivery
   end
 
   def create
