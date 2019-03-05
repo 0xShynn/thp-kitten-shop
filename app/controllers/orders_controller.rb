@@ -1,17 +1,9 @@
 class OrdersController < ApplicationController
  
   def show
-    @order = Order.find(params[:id])
-    @cart = @order.cart
-
-    @cart_items = CartItem.where(cart_id: @cart.id)
-    
-    @total = 0.00
-    @cart_items.each do |cart_item|
-      @total = cart_item.item.price + @total
-    end
-
   end
+
+  
 
   def new
     @order = Order.new
