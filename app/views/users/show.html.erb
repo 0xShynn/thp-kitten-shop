@@ -14,8 +14,10 @@
     </div>
     <div class="col">
      <h5 class="pb-5">Mes commandes précédentes</h5>
-     <%@order.each do |order|%>
-       <p><%=order.id%> <%=order.total.price%> 
+     <%@orders.each do |order|%>
+      <h6><%= order.name %></h6>
+      <h6><%= order.updated_at %></h6>
+      <h6><%= order.total %></h6>
 
       <%end%>
     </div>

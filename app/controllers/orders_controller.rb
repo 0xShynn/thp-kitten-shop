@@ -10,11 +10,11 @@ class OrdersController < ApplicationController
     @cart_items.each do |cart_item|
       @total = cart_item.item.price + @total
     end
-
+ @total.save
   end
 
   def new
-
+    
   end
 
   def create
