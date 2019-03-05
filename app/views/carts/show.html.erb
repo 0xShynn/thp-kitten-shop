@@ -1,9 +1,47 @@
-<h2>Mon panier</h2>
-
+<div class="container py-3 px-md-5"><h2>Mon panier</h2>
+</div>
 <%@cart_items.each do |cart_item|%>
   
-  <p><%=cart_item.item.name%> <%=cart_item.item.price%> 
-  <%= link_to 'Retirer du panier', cart_item_path(cart_item_id: cart_item.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  <div class="row m-2">
+  <div class="card bg-secondary col-sm-3">
+    <div class="card-body text-center">
+      <img src="<%=cart_item.item.img_link%>" class="img-rounded" alt="Kitten" style="width:50px;">
+    </div>
+  </div>
+  <div class="card bg-secondary col-sm-4">
+    <div class="card-body text-center">
+      <p class="card-text"><%=cart_item.item.name%> </p>
+    </div>
+  </div>
+  <div class="card bg-secondary col-sm-2">
+    <div class="card-body text-center">
+      <p class="card-text"><%=cart_item.item.price%></p>
+    </div>
+  </div>
+  <div class="card bg-secondary col-sm-3">
+    <div class="card-body text-center">
+      <p class="card-text"><%= link_to 'Retirer du panier', cart_item_path(cart_item_id: cart_item.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </div>
+  </div>
+</div>
+
+
 <%end%>
+<div class="container ">
+<div class="row justify-content-end m-5 ">
+<div class="card bg-secondary p-3">
+<h5>Total : <%=@total%></h5>
+</div>
+</div>
+</div>
+<div class="row justify-content-end">
+<button type="button" class="btn btn-secondary"><%= link_to 'Continuer mes achats', root_path%> </button>
+<button type="button" class="btn btn-secondary"><%= link_to 'Passer la commande', root_path%> </button>
+</div>
+
+
+
 
 <p>Total : <%=@total%></p>
+
+<p><%= link_to "Passer la commande",orders_path(cart_id: @cart_items.first.cart_id), class:"btn btn-success", method: "post" %></p>
