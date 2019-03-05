@@ -12,5 +12,7 @@ class User < ApplicationRecord
     Cart.create!(user_id: id)
   end
 
+  has_many :orders
+  has_many :items, through: :orders
 end
 
