@@ -1,9 +1,12 @@
 <div class="">
   <div class="container bg-white text-center p-5 my-5 rounded">
     
-    <h1> <%= current_user.first_name %> <%= current_user.last_name %> </h1>
-    <h2 class="h3"> <%= current_user.email %></h2>
-    <p class="h3 my-5"> <%= current_user.first_name %> </p>
-    <%= link_to "Modifier ses informations importantes", edit_user_registration_path, class:"btn btn-outline-primary" %>
+    <h1> <%= @user.first_name %> <%= @user.last_name %> </h1>
+    <h2 class="h3"> <%= @user.email %></h2>
+    <%@orders.each do |order|%>
+      <h3>Numéro d'order :
+      <%=link_to "#{order.id}", user_order_path(user_id: @user.id, id: order.id) %> </h3>
+    <%end%>
+    <%= link_to "Modifier son adresse mail et mot de passe", edit_user_registration_path, class:"btn btn-outline-primary" %>
   </div>
 </div>
