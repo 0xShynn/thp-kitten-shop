@@ -5,6 +5,8 @@ class CartsController < ApplicationController
   end
 
   def show
+    puts '$' * 60
+    puts params.inspect
     @cart_items = CartItem.where(cart_id: params[:id])
     @total = 0.00
     @cart_items.each do |cart_item|
