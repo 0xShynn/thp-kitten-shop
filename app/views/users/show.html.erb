@@ -1,9 +1,25 @@
-<div class="">
-  <div class="container bg-white text-center p-5 my-5 rounded">
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="container">
     
-    <h1> <%= current_user.first_name %> <%= current_user.last_name %> </h1>
-    <h2 class="h3"> <%= current_user.email %></h2>
-    <p class="h3 my-5"> <%= current_user.first_name %> </p>
-    <%= link_to "Modifier ses informations importantes", edit_user_registration_path, class:"btn btn-outline-primary" %>
+    <h5 class="pb-5">Mes informations</h5>
+    <h6>Mon nom : <%= current_user.last_name %> </h6>
+    <h6>Mon prénom : <%= current_user.first_name %> </h6>
+    <h6>Mon mail : <%= current_user.email %></h6>
+    
+    <div class=" p-5"><%= link_to "Modifier mes informations", edit_user_registration_path, class:"btn btn-outline-primary" %>
   </div>
-</div>
+  </div>
+    </div>
+    <div class="col">
+     <h5 class="pb-5">Mes commandes précédentes</h5>
+     <%@order.each do |order|%>
+       <p><%=order.id%> <%=order.total.price%> 
+
+      <%end%>
+    </div>
+  </div>
+  
+  
+  
