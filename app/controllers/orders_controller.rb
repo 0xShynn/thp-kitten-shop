@@ -1,40 +1,18 @@
 class OrdersController < ApplicationController
  
-  def show
-    @order = Order.find(params[:id])
-    @cart = @order.cart
-
-    @cart_items = CartItem.where(cart_id: @cart.id)
-    
-    @total = 0.00
-    @cart_items.each do |cart_item|
-      @total = cart_item.item.price + @total
-    end
-
-  end
-
   def new
     @order = Order.new
-    @cart = Cart.find_by(user: current_user)
-    @cart_items = CartItem.where(cart_id: @cart.id)
-  
-    @total = 0.00
-    @cart_items.each do |cart_item|
-      @total = cart_item.item.price + @total
-    end
+    @cart = @order.find_current_user_cart(current_user)
+    @cart_items = @order.find_cart_items_of_the_cart(@cart)
+    @total = @order.total_amount_order(@cart_items)
 
   end
 
   def create
-    cart = Cart.find_by(user: current_user)
-    order = Order.new
-    order.user_id = current_user.id 
-    order.cart_id = cart.id
-    @cart_items = CartItem.where(cart_id: cart.id)
-    @total = 0.00
-    @cart_items.each do |cart_item|
-      @total = cart_item.item.price + @total
-    end
+    @order = Order.new
+    @cart = @order.find_current_user_cart(current_user)
+    @cart_items = @order.find_cart_items_of_the_cart(@cart)
+    @total = @order.total_amount_order(@cart_items)
     
     # Amount in cents
     @amount = (@total*100).to_i
@@ -49,15 +27,23 @@ class OrdersController < ApplicationController
           amount: @amount,
           description: 'Rails Stripe customer',
           currency: 'eur',
-        })    
+        })
 
-    order.save
-    puts "$" * 60
-    puts "Commande créée"
-    redirect_to root_path
+  @order.cart = @cart
+  @order.user = current_user
+  
+ if @order.save
+      flash[:success] = "Ta commande a bien été payée ! Super"
+      redirect_to root_path
+    else
+      flash[:error] = "Ta commande n'a pas été validée :("
+      render :new
+  end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to cart 
-  end
-end
+    redirect_to @cart 
+
+  end # End create
+
+end # End class
