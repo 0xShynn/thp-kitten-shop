@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
   resources :orders, only: [:new, :create, :show]
+  resources :charges
 
 end
