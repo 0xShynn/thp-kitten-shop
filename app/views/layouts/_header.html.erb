@@ -1,6 +1,6 @@
 <!-- NAV BAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Kitten Shop</a>
+  <%= link_to 'Kitten Shop', root_path, class: 'navbar-brand' %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -18,13 +18,20 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <% if user_signed_in? %>
             <%= link_to "Mon Profil", user_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Mon Panier", cart_path( Cart.find_by(user_id: current_user.id)), class: "dropdown-item" %>
             <%= link_to "Se déconnecter", destroy_user_session_path, class: "dropdown-item", method: :delete %>
           <% else %>
             <%= link_to "S'inscrire", new_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item" %>
           <% end %>
         </div>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to cart_path( Cart.find_by(user_id: current_user.id)), class: "nav-link" do %>
+              <i class="fas fa-shopping-cart mr-2"></i> 
+              Panier
+            <% end %>
+          </li>
+        <% end %>
       </li>
 
     </div>
