@@ -8,22 +8,4 @@
 
 <p>Total : <%=@total%></p>
 
-<%= form_tag cart_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    <label class="amount">
-      <span>Payer <%=@total%> €</span>
-    </label>
-  </article>
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Ma commande de photos de chatons"
-          data-amount="<%= @total * 100 %>"
-          data-currency="eur"
-          data-locale="auto"></script>
-<% end %>
+<p><%= link_to "Passer la commande",orders_path(cart_id: @cart_items.first.cart_id), class:"btn btn-success", method: "post" %></p>
