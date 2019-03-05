@@ -1,14 +1,11 @@
-<<<<<<< HEAD
 <h2>Récaputilatif de ma commande</h2>
 
-<p>Mon numéro de panier : <%=@order.cart_id%></p>
-<p>Mon numéro d'user : <%=current_user.id%>
 
-<%@cart_items.each do |cart_item|%>
-  <p><%=order.id%> <%=cart_item.item.name%> <%=order.total%> 
-<%end%>
+<% @cart_items.each do |cart_item| %>
+  <p><%= cart_item.item.id %> <%= cart_item.item.name %> <%= cart_item.item.price %> 
+<% end %>
 
-<%= form_tag cart_path do %>
+<%= form_tag user_orders_path(@order, user_id: current_user.id) do %>
   <article>
     <% if flash[:error].present? %>
       <div id="error_explanation">
@@ -27,6 +24,3 @@
           data-currency="eur"
           data-locale="auto"></script>
 <% end %>
-=======
-<h2>Ma commande n°<%=@order.id%></h2>
->>>>>>> delivery
