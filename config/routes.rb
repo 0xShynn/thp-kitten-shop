@@ -8,13 +8,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   resources :carts, only: [:show]
   resources :cart_items, only: [:new, :create, :destroy]
-<<<<<<< HEAD
 
   resources :users, only: [:show] do
     resources :avatars, only: [:create]
   end
-=======
   resources :orders, only: [:new, :create, :show]
->>>>>>> delivery
 
 end

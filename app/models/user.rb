@@ -14,10 +14,7 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :items, through: :orders
-<<<<<<< HEAD
-=======
 
   has_one_attached :avatar
->>>>>>> delivery-laurane-active-storage
 end
 
