@@ -1,13 +1,5 @@
 class OrdersController < ApplicationController
- 
-<<<<<<< HEAD
-  def show
-  end
 
-  
-
-=======
->>>>>>> 248a07ba762521ff027a07d8e6bef2ee628955fb
   def new
     @order = Order.new
     @cart = @order.find_current_user_cart(current_user)
@@ -42,6 +34,8 @@ class OrdersController < ApplicationController
   
  if @order.save
       flash[:success] = "Ta commande a bien été payée ! Super"
+      new_cart = Cart.new(user_id: current_user.id)
+      new_cart.save
       redirect_to root_path
     else
       flash[:error] = "Ta commande n'a pas été validée :("

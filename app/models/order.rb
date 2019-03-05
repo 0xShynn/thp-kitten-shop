@@ -2,9 +2,10 @@ class Order < ApplicationRecord
     belongs_to :user
     belongs_to :cart
     has_many :cart_items, through: :cart
+    
 
     def find_current_user_cart(current_user)
-        return Cart.find_by(user: current_user)
+        return Cart.where(user: current_user).last
     end
 
     def find_cart_items_of_the_cart(cart)
@@ -18,4 +19,9 @@ class Order < ApplicationRecord
         end
         return total
     end
+
+    def attribute_new_cart_to_user
+    
+    end
+
 end
