@@ -1,1 +1,5 @@
-<h2>Ma commande n°<%=@order.id%></h2>
+<h2>Récapitulatif de ma commande n°<%=@order.id%></h2>
+
+<%@cart_items.each do |cart_item| %>
+ <p> <%=cart_item.item.name%>  <%=cart_item.item.price%></p> 
+<%end%>

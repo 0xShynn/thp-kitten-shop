@@ -2,28 +2,8 @@
   <h4>Modifier mes informations</h4>
 <br>
 <br>
-  <%= form_for@user, multipart: true do |f| %>
-    
-    <div class="field">
-      <i>Prénom</i>
-      <%= f.text_field :first_name, autocomplete: "first_name", class: 'form-control mb-4' %>
-    </div>
-
-     <div class="field">
-      <%= f.label :first_name%><br>
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: 'form-control mb-4' %>
-    </div>
-
-     <div class="field">
-      <%= f.label :last_name%><br>
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: 'form-control mb-4' %>
-    </div>
-
-    <div class="field">
-      <i>Nom</i>
-      <%= f.text_field :last_name, autocomplete: "last_name", class: 'form-control mb-4' %>
-    </div>
-    
+  <%= form_for @user, multipart: true do |f| %>
+  
     <div class="field">
       <%= f.label :email %><br>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control mb-4' %>
@@ -36,9 +16,9 @@
     <div class="field">
       <i>Nouveau mot de passe</i><br>
       <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
-      <!-- <% if @minimum_password_length %>
+      <% if @minimum_password_length %>
         <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %> -->
+      <% end %> 
       <br>
     </div>
 

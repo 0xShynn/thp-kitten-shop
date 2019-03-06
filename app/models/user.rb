@@ -17,6 +17,7 @@ class User < ApplicationRecord
     id = User.all.last.id
     Cart.create!(user_id: id)
   end
+  
 
   def send_welcome_email_to_user
     UserMailer.welcome_email_to_user(self).deliver_now!
@@ -31,6 +32,5 @@ class User < ApplicationRecord
   def default_values
     self.is_admin ||= false
   end
-
 end
 
