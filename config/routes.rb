@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
   resources :cart_items, only: [:new, :create, :destroy]
-
+ 
   resources :items, only: [:index, :show, :new, :edit] do
     resources :photos, only: [:create]
   end
