@@ -1,32 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Accueil</title>
-</head>
-<body>
 <%= link_to "Ajouter un produit",new_item_path(@item), class:"btn btn-success btn-sm" %>
 <div class="container">
     <div class="row">
     <% @items.each do |item| %>
       <div class="col-md-4">
         <div class="card mb-4 text-center">
-          <div class="card-body">       
-            <h5 class="card-title mt-3"><%= item.name %></h5>
-            <p class="card-text"><%= item.price %> $</p>
-            <p class="card-text"> <%= item.description %>  </p>
-            <%= link_to "En savoir plus", item_path(item.id), class: 'btn btn-primary btn-sm' %>
-            <%if user_signed_in? == true%>
-              <%= link_to "Ajouter au panier", cart_items_path(cart_id: Cart.where(user_id: current_user.id).last.id, item_id: item.id), class:"btn btn-success btn-sm", method: "post" %>
-            <%end%>
+          <div class="card-body">
+
+          <% if item.photo.attached? %>
+            <%= image_tag item.thumbnail_300, alt: 'photo chat' %>
+          <% else %>
+            <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+          <% end %>
+
+          <h5 class="card-title mt-3"><%= item.name %></h5>
+          <p class="card-text"><%= item.price %> $</p>
+          <p class="card-text"> <%= item.description %>  </p>
+          <%= link_to "En savoir plus", item_path(item.id), class: 'btn btn-primary btn-sm' %>
+          <%if user_signed_in? == true%>
+            <%= link_to "Ajouter au panier", cart_items_path(cart_id: Cart.where(user_id: current_user.id).last.id, item_id: item.id), class:"btn btn-success btn-sm", method: "post" %>
+          <%end%>
           </div>
         </div>
       </div>
     <% end %>
     </div>
 </div>
-
-
-</body>
-</html>
-
-
