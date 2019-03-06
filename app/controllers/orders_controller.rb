@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @cart = @order.find_current_user_cart(current_user)
     @cart_items = @order.find_cart_items_of_the_cart(@cart)
-    @total = @order.total_amount_order(@cart_items)
+    @order.total = @order.total_amount_order(@cart_items)
 
   end
 
@@ -16,10 +16,10 @@ class OrdersController < ApplicationController
     @order = Order.new
     @cart = @order.find_current_user_cart(current_user)
     @cart_items = @order.find_cart_items_of_the_cart(@cart)
-    @total = @order.total_amount_order(@cart_items)
+    @order.total = @order.total_amount_order(@cart_items)
     
     # Amount in cents
-    @amount = (@total*100).to_i
+    @amount = (@order.total*100).to_i
 
         customer = Stripe::Customer.create({
           email: params[:stripeEmail],

@@ -14,7 +14,7 @@ end
 puts "Item créé"
 
 
-User.create!(email: "admin@admin.com", password: "admin828", is_admin: true)
+User.create!(email: "admin@admin.com", password: "admin01", is_admin: true)
 
 4.times do |i|
   User.create!(email: "user#{i+2}@user.com", password: "tests#{i+2}", is_admin: false)
@@ -31,6 +31,6 @@ end
 puts "cart item cree"
 
 3.times do |i|
-  Order.create!(user_id: 1, cart_id: i+1)
+  Order.create!(user_id: 1, cart_id: i+1, total: 100)
 end
 puts "order cree"
