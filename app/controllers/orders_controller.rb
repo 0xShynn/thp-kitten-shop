@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @cart_items = CartItem.where(cart_id: @order.cart_id)
   end
 
   def new
