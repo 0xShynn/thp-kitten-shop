@@ -10,8 +10,7 @@
     <% @items.each do |item| %>
       <div class="col-md-4">
         <div class="card mb-4 text-center">
-          <div class="card-body">
-            <%=image_tag item.thumbnail_300, alt: 'photo chat'%>       
+          <div class="card-body">       
             <h5 class="card-title mt-3"><%= item.name %></h5>
             <p class="card-text"><%= item.price %> $</p>
             <p class="card-text"> <%= item.description %>  </p>
