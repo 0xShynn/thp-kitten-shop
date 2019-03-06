@@ -33,6 +33,14 @@
       <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control'%>
     </div>
 
+    <div class="form mb-4">
+          <h3>Changer d'avatar ?</h3>
+        <%= form_tag user_avatars_path(@user), multipart: true do %>
+        <%= file_field_tag :avatar %>
+        <%= submit_tag "mettre à jour" %>
+        <% end %>
+          </div>
+
     <div class="actions">
       <br>
       <%= f.submit "changer mes informations", class: 'btn btn-primary'%>
