@@ -18,7 +18,6 @@
       
       <div class="col">
       <div class="container">
-    
         <h5> Mes commandes précédentes </h5>
         <%@orders.each do |order|%>
           <h3><%=link_to "Commande n° #{order.id}", user_order_path(user_id: @user.id, id: order.id) %> </h3>
