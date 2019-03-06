@@ -12,7 +12,7 @@ class UserMailer < ApplicationMailer
     )
   end
 
-  def email_order_to_user(order)
+  def order_email_to_user(order)
     @order = order
     
     mail(

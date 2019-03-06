@@ -1,8 +1,9 @@
 class AdminMailer < ApplicationMailer
 
-  def email_new_user(user)
+  def new_user_email_to_admin(user)
     
     @admin = User.find(1)
+    @user = user
 
     mail(
       from: "a.nhek@icloud.com",
@@ -12,9 +13,10 @@ class AdminMailer < ApplicationMailer
     )    
   end
 
-  def email_order_to_admin(user)
+  def order_email_to_admin(order)
 
     @admin = User.find(1)
+    @order = order
 
     mail(
       from: "a.nhek@icloud.com",
