@@ -13,19 +13,21 @@ class ItemsController < ApplicationController
     end
 
     def create
-      @item = Item.new(
-      name: params[:name], 
-      price: params[:price], 
-      description: params[:description])
+      flash[:error] =  "Salut, tu es bien au bon endroit frère !"
+      redirect_to root_path
+      # @item = Item.new(
+      # name: params[:name], 
+      # price: params[:price], 
+      # description: params[:description])
     
-      if @item.save
-        flash[:success]="Ton produit a bien ete ajoutee"
-        saving_photo
-        redirect_to item_path(@item.id)
-      else
-        flash.now[:error]="Ton produit n'a pas pu etre sauvegardee"
-        render :new  
-      end
+      # if @item.save
+      #   flash[:success]="Ton produit a bien ete ajoutee"
+      #   saving_photo
+      #   redirect_to item_path(@item.id)
+      # else
+      #   flash.now[:error]="Ton produit n'a pas pu etre sauvegardee"
+      #   render :new  
+      # end
     end 
 
     def saving_photo

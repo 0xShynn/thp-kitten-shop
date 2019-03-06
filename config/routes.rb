@@ -11,15 +11,13 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
   resources :cart_items, only: [:new, :create, :destroy]
- 
-  resources :items, only: [:index, :show, :new, :edit] do
-    resources :photos, only: [:create]
-  end
-
+  resources :items, only: [:index, :show]
   resources :orders, only: [:new, :create, :show]
 
   namespace :admin do
-    resources :items, only: [:new, :create, :show, :delete]
+    resources :items, only: [:new, :create, :edit, :delete] do
+      resources :photos, only: [:create]
+    end
     resources :orders, only: [:index]
   end
 end
