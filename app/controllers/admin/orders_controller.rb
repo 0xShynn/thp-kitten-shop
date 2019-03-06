@@ -8,7 +8,6 @@ class Admin::OrdersController < ApplicationController
 
 
 
-
   private
   def check_if_admin!
     if current_user.is_admin == false

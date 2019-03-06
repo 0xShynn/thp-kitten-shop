@@ -38,6 +38,8 @@ class OrdersController < ApplicationController
   
  if @order.save
       flash[:success] = "Ta commande a bien été payée ! Super"
+      @cart.is_ordered = true 
+      @cart.save 
       new_cart = @order.attribute_new_cart_to_user(current_user)
       new_cart.save
       redirect_to root_path
