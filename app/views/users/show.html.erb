@@ -3,14 +3,23 @@
     <div class="col">
       <div class="container">
     
-    <h1> <%= @user.first_name %> <%= @user.last_name %> </h1>
-    <h2 class="h3"> <%= @user.email %></h2>
-    <%@orders.each do |order|%>
-      <h3>Numéro d'order :
-      <%=link_to "#{order.id}", user_order_path(user_id: @user.id, id: order.id) %> </h3>
-    <%end%>
-    <%= link_to "Modifier son adresse mail et mot de passe", edit_user_registration_path, class:"btn btn-outline-primary" %>
+        <h5><%= @user.first_name %></h5>
+         <h5><%= @user.last_name %></h5>
+        <h5><%= @user.email %></h5>
+        <%= link_to "Modifier mes informations", edit_user_registration_path, class:"btn btn-outline-primary m-5 " %>
+        </div>
+      </div>
+      <div class="col">
+      <div class="container">
+    
+        <h5> Mes commandes précédentes </h5>
+        <%@orders.each do |order|%>
+          <h3><%=link_to "Commande n° #{order.id}", user_order_path(user_id: @user.id, id: order.id) %> </h3>
+        <%end%>
+        </div>
+      </div>
+    </div>
   </div>
-  
+
   
   
