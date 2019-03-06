@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+  
+  # Customized slugs
+  extend FriendlyId
+  friendly_id :full_name, use: :slugged
+
+  def full_name
+    first_name + " " + last_name
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -32,5 +41,6 @@ class User < ApplicationRecord
   def default_values
     self.is_admin ||= false
   end
+  
 end
 

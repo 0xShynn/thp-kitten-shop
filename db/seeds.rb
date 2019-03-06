@@ -14,7 +14,7 @@ end
 puts "Item créé"
 
 
-User.create!(email: "admin@admin.com", password: "admin01", is_admin: true)
+User.create!(email: "admin@admin.com", first_name: "Admin", last_name: "The Boss", password: "admin01", is_admin: true)
 
 4.times do |i|
   User.create!(email: "user#{i+2}@user.com", password: "tests#{i+2}", first_name: "José #{i+2}", last_name: "Josiane #{i+2}")

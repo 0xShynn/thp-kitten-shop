@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # before_action :authenticate_user!, only: [:show]
   
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @orders = Order.where(user_id: params[:id])
   end
 
@@ -26,8 +26,8 @@ class UsersController < ApplicationController
   end
 
   def to_param
-  @user = User.find(params[:id])
-edit_user_path(user)
+    @user = User.friendly.find(params[:id])
+    edit_user_path(user)
   end 
 
 end 
