@@ -1,0 +1,30 @@
+<div class="bloc-600 text-center mx-auto">
+  <h2>Creer un produit</h2>
+<%= form_tag url_for(action: 'create'), method: "post", multipart: true do %>
+    <div class="form mb-4">
+      <%= label_tag 'Le nom du chat' %>
+    <br/>
+      <%= text_field_tag 'name', @name, class: "form-control", placeholder: "Entrez le nom du chat." %>
+    </div>
+    <div class="form mb-4">
+      <%= label_tag 'Le prix' %>
+    <br/>
+      <%= number_field_tag 'price', @price, class: "form-control", placeholder: "Entrez son prix." %>
+    </div>
+
+    <div class="form mb-4">
+      <%= label_tag 'La description' %>
+    <br/>
+      <%= text_area_tag 'description', @description, class: "form-control", placeholder: "Entrez sa description." %>
+    </div>
+    <div class="form mb-4">
+    <h3>Ajouter la photo associee au produit ?</h3>
+
+        <%= file_field_tag :photo %>
+    
+    </div>
+    <div class="form mb-4">
+      <%= submit_tag "Envoyer", class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>
