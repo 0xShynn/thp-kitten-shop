@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>L'utilisateur <%= @order.user.first_name %> vient de passer une commande sur Kitten-Shop !</h1>
+    <h2>Voici un résumé de sa commande n° <%= @order.id %> : </h2>
+    <ul>
+      <% @order.cart_items.each do |cart_item| %>
+        <li>
+          <h3><%= cart_item.item.name %></h3>
+          <p><%= cart_item.item.description %></p>
+        </li>
+      <% end %>
+    </ul>
+  </body>
+</html>
