@@ -13,7 +13,7 @@
 
 
           <h5 class="card-title mt-3"><%= item.name %></h5>
-          <p class="card-text"><%= item.price %> $</p>
+          <p class="card-text"><%= item.price %> €</p>
           <p class="card-text"> <%= item.description %>  </p>
           <%= link_to "En savoir plus", item_path(item.id), class: 'btn btn-primary btn-sm' %>
           <%if user_signed_in? == true%>
