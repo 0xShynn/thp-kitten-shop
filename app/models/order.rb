@@ -20,8 +20,8 @@ class Order < ApplicationRecord
       return total
   end
 
-  def attribute_new_cart_to_user
-
+  def attribute_new_cart_to_user(current_user)
+    Cart.new(user_id: current_user.id)
   end
 
   # Sending a mail to the user 
