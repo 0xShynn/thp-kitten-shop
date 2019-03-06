@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
+  
   def show
-    puts '$' * 60
     puts params.inspect
   end
 

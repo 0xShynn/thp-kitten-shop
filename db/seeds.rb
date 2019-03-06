@@ -13,8 +13,11 @@ prices = [10.99, 11.99, 12.99, 13.99, 14.99, 15.99, 16.99, 17.99, 18.99, 19.99]
 end
 puts "Item créé"
 
-5.times do |i|
-  User.create!(email: "user#{i+1}@user.com", password: "tests#{i+1}")
+
+User.create!(email: "admin@admin.com", password: "admin01", is_admin: true)
+
+4.times do |i|
+  User.create!(email: "user#{i+2}@user.com", password: "tests#{i+2}", first_name: "José #{i+2}", last_name: "Josiane #{i+2}")
 end 
 
 puts "Utilisateur créé"
@@ -28,6 +31,6 @@ end
 puts "cart item cree"
 
 3.times do |i|
-  Order.create!(user_id: 1, cart_id: i+1)
+  Order.create!(user_id: 1, cart_id: i+1, total: 100)
 end
 puts "order cree"

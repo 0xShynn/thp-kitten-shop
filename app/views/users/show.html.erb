@@ -6,6 +6,12 @@
         <h5>Nom : <%= @user.first_name %></h5>
          <h5>Prénom : <%= @user.last_name %></h5>
         <h5>Email : <%= @user.email %></h5>
+        <h5>Avatar actuel</h5>
+      <%if @user.avatar.attached?%>
+      <%= image_tag @user.avatar, alt: 'avatar' %>
+      <%else%>
+      <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+      <%end%>
         <%= link_to "Modifier mes informations", edit_user_registration_path, class:"btn btn-outline-primary m-5 " %>
         </div>
       </div>
