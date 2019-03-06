@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>Salut à toi <%= @order.user.first_name %> et merci d'avoir passé une commande sur Kitten-Shop !</h1>
-    <h2>Voici un résumé de ta commande : </h2>
+    <h2>Voici un résumé de ta commande n° <%= @order.id %> : </h2>
     <ul>
       <% @order.cart_items.each do |cart_item| %>
         <li>

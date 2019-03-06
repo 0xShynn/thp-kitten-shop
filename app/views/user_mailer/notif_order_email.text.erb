@@ -1,2 +1,7 @@
 Salut à toi <%= @order.user.first_name %> et merci d'avoir passé une commande sur Kitten-Shop !
+Voici un résumé de ta commande n° <%= @order.id %>
+<% @order.cart_items.each do |cart_item| %>
+  <%= cart_item.item.name %>
+  <%= cart_item.item.description %>
+<% end %>
 Pour accéder à ton espace client, connecte-toi via : lol.
