@@ -9,15 +9,15 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    cart = Cart.find_by(user_id: current_user.id)
+    cart = Cart.where(user_id: current_user.id).last
     cart_item = CartItem.create(cart_item_params)
-    redirect_to cart_path(cart)
+    redirect_to user_cart_path(current_user, cart)
   end
 
   def destroy
     @cart_item = CartItem.find(params[:cart_item_id])
     @cart_item.destroy 
-    redirect_to cart_path(Cart.find_by(user_id: current_user.id))
+    redirect_to user_cart_path(Cart.find_by(user_id: current_user.id))
     
   end
 

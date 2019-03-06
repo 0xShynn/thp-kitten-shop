@@ -5,6 +5,8 @@ class CartsController < ApplicationController
   end
 
   def show
+    puts '$' * 60
+    puts params.inspect
     @cart_items = CartItem.where(cart_id: params[:id])
     @total = 0.00
     @cart_items.each do |cart_item|
@@ -16,24 +18,24 @@ class CartsController < ApplicationController
   end
 
   def create
-    # Amount in cents
-    @amount = @total
+  #   # Amount in cents
+  #   @amount = @total
 
-    customer = Stripe::Customer.create({
-      email: params[:stripeEmail],
-      source: params[:stripeToken],
-    })
+  #   customer = Stripe::Customer.create({
+  #     email: params[:stripeEmail],
+  #     source: params[:stripeToken],
+  #   })
 
-    charge = Stripe::Charge.create({
-      customer: customer.id,
-      amount: @amount,
-      description: 'Rails Stripe customer',
-      currency: 'eur',
-    })
+  #   charge = Stripe::Charge.create({
+  #     customer: customer.id,
+  #     amount: @amount,
+  #     description: 'Rails Stripe customer',
+  #     currency: 'eur',
+  #   })
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to @cart
+  # rescue Stripe::CardError => e
+  #   flash[:error] = e.message
+  #   redirect_to @cart
   end
 
 end

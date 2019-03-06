@@ -1,10 +1,1 @@
-<h2>Ma commande</h2>
-
-<p>Mon numéro de panier : <%=@order.cart_id%></p>
-<p>Mon numéro d'user : <%=current_user.id%>
-
-<%@cart_items.each do |cart_item|%>
-  <p><%=cart_item.item.id%> <%=cart_item.item.name%> <%=cart_item.item.price%> 
-<%end%>
-
-<p>Total : <%=@total%>
+<h2>Ma commande n°<%=@order.id%></h2>
