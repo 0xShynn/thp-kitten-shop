@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_085023) do
+ActiveRecord::Schema.define(version: 2019_03_06_125617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_085023) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_ordered"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_085023) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "total"
     t.index ["cart_id"], name: "index_orders_on_cart_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -80,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_085023) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.boolean "is_admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -13,14 +13,14 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Payer <%=@total%> €</span>
+      <span>Payer <%=@order.total%> €</span>
     </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="Ma commande de photos de chatons"
-          data-amount="<%= @total * 100 %>"
+          data-amount="<%= @order.total * 100 %>"
           data-currency="eur"
           data-locale="auto"></script>
 <% end %>
