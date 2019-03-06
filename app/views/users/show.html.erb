@@ -3,9 +3,9 @@
     <div class="col">
       <div class="container">
     
-        <h5><%= @user.first_name %></h5>
-         <h5><%= @user.last_name %></h5>
-        <h5><%= @user.email %></h5>
+        <h5>Nom : <%= @user.first_name %></h5>
+         <h5>Prénom : <%= @user.last_name %></h5>
+        <h5>Email : <%= @user.email %></h5>
         <%= link_to "Modifier mes informations", edit_user_registration_path, class:"btn btn-outline-primary m-5 " %>
         </div>
       </div>
