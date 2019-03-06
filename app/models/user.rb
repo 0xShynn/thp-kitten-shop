@@ -20,6 +20,9 @@ class User < ApplicationRecord
     Cart.create!(user_id: id)
   end
 
+  def all_carts
+    
+  end
   
 private
   def welcome_send
@@ -29,6 +32,8 @@ private
   def default_values
     self.is_admin ||= false
   end
+
+
 
 end
 
