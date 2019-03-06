@@ -4,15 +4,25 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'items#index'
+  
   resources :items
   resources :users, only: [:show, :new, :create]
+
+  
   resources :carts, only: [:show]
 
 
   resources :cart_items, only: [:new, :create, :destroy]
+ 
+
 
   resources :users, only: [:show] do
     resources :avatars, only: [:create]
+  end
+
+
+  resources :items, only: [:show, :new, :edit] do
+    resources :photos, only: [:create]
   end
 
 end
