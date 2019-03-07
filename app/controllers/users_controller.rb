@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def update
      @user = current_user
       if @user.update_attributes(user_params)
+        puts "Wewewewe !"
         redirect_to user_path
     else
       render 'edit'
