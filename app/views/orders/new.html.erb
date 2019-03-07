@@ -7,23 +7,20 @@
   <table class="table table-bordered table-responsive-sm h5">
     <thead class="">
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Nom</th>
-        <th scope="col">Prix</th>
+        <th scope="col" class="text-right">Prix</th>
       </tr>
     </thead>
     <tbody>
       <%@cart_items.each do |cart_item|%>
       <tr>
-        <th scope="row"> <%= cart_item.id %> </th>
         <td class="h4"><%= cart_item.item.name %></td>
-        <td class="font-weight-bold text-black"><%= cart_item.item.price %> €</td>
+        <td class="font-weight-bold text-black text-right"><%= cart_item.item.price %> €</td>
       </tr>
       <%end%>
       <tr>
-        <th scope="row"></th>
         <td colspan="1" class="h3">Total</td>
-        <td class="h3"><%=@order.total%> €</td>
+        <td class="h3 text-right"><%=@order.total%> €</td>
       </tr>
     </tbody>
   </table>

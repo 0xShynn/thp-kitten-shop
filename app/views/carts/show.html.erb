@@ -1,7 +1,7 @@
 <div class="bg-primary d-inline-block mb-4 d-flex align-items-center justify-content-center" style="height: 260px; width: 100%;">
 </div>
 
-    </div>
+<div class="container p-5">
 
   <div class="title mb-5 text-center">
     <h2>Mon panier</h2>
@@ -12,31 +12,31 @@
       <tr>
         <th scope="col">Photo</th>
         <th scope="col">Nom</th>
-        <th scope="col">Description</th>
         <th scope="col">Prix unitaire</th>
          <th scope="col">Quantité</th>
-        <th scope="col">Prix total</th>
          <th scope="col">Suppression</th>
+        <th scope="col">Prix total</th>
       </tr>
     </thead>
     <tbody>
       <%@cart_items.each do |cart_item|%>
       <tr>
         <td>
-          <div class="bg-primary d-inline-block mb-4" style="height: 140px; width: 140px;"></div>
+          <!-- <div class="bg-primary d-inline-block mb-4" style="height: 140px; width: 140px;"></div> -->
+          <%= image_tag cart_item.item.thumbnail_200, alt: 'avatar', class: 'w-100 mb-4' %>
+
         </td>
         <td class="h4"><%= cart_item.item.name %></td>
-        <td class="font-weight-normal"><%= cart_item.item.description %></td>
         <td><%= cart_item.item.price %>€ </td>
         <td class="font-weight-bold text-black"><%= cart_item.quantity %></td>
-        <td  class="h3"><%= cart_item.quantity * cart_item.item.price%> €</td>
         <td> <%= link_to 'Retirer du panier', cart_item_path(cart_item_id: cart_item.id), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ces articles ?' } %> </td>
+        <td  class="h3"><%= cart_item.quantity * cart_item.item.price%> €</td>
         <%end%>
       </tr>
     </tbody>
   </table>
 
-  <center><p class="h1">TOTAL : <%=@total%> €</p></center>
+  <p class="h1 text-right mt-4 mb-5">TOTAL : <%=@total%> €</p>
 
   <div class="d-flex justify-content-end py-3">
     <%= link_to 'Continuer mes achats', root_path, class: 'btn btn-outline-secondary mr-4'%>
