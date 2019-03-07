@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def show
     @order = Order.find(params[:id])
     @cart_items = CartItem.where(cart_id: @order.cart_id)
@@ -38,14 +39,14 @@ class OrdersController < ApplicationController
   @order.user = current_user
   
  if @order.save
-      flash[:success] = "Ta commande a bien été payée ! Super"
+      flash[:success] = "Ta commande a bien été payée ! Tu peux la retrouver dans ton profil :) "
       @cart.is_ordered = true 
       @cart.save 
       new_cart = @order.attribute_new_cart_to_user(current_user)
       new_cart.save
       redirect_to root_path
     else
-      flash[:error] = "Ta commande n'a pas été validée :("
+      flash[:error] = "Ta commande n'a pas été validée :( Réessaie !"
       render :new
   end
 

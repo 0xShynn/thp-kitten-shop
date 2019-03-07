@@ -5,21 +5,28 @@ Rails.application.routes.draw do
   root 'items#index'
  
   resources :users, only: [:show, :new, :create, :edit, :update] do
-    resources :carts, only: [:show]
-    resources :orders, only: [:new, :show, :create]
+    resources :carts, only: [:show], path: 'panier'
+    resources :orders, only: [:new, :show, :create], path: 'commande'
     resources :avatars, only: [:create]
   end
   
   resources :cart_items, only: [:new, :create, :destroy]
+<<<<<<< HEAD
  
   resources :items, only: [:index, :show] do
+=======
+  
+  resources :items, only: [:index, :show, :new, :edit], path: 'article' do
+>>>>>>> delivery
     resources :photos, only: [:create]
   end
-
-  resources :orders, only: [:new, :create, :show]
-
+  
   namespace :admin do
     resources :items
-    resources :orders, only: [:index]
-  end
+    resources :orders, only: [:index, :edit, :destroy]
+    resources :cart_items, only: [:destroy]
+  end 
+  
+  resources :admins, only: [:index]
+
 end

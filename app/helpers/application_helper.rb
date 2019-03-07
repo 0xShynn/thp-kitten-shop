@@ -7,4 +7,8 @@ module ApplicationHelper
       when 'alert' then "alert-warning"
     end
   end
+
+  def is_admin(user)
+    user.is_admin == true
+  end
 end
