@@ -1,7 +1,9 @@
 <div class="container">
 
     <div class="admin">
-      <%= link_to "Ajouter un produit", new_admin_item_path, class:"btn btn-success btn-sm" %>
+      <% if user_signed_in? %>
+        <%= link_to "Ajouter un produit", new_admin_item_path, class:"btn btn-success btn-sm" %>
+      <%end%>
     </div>
 
     <div class="row">
@@ -13,9 +15,9 @@
 
 
           <h5 class="card-title mt-3"><%= item.name %></h5>
-          <p class="card-text"><%= item.price %> $</p>
+          <p class="card-text"><%= item.price %> €</p>
           <p class="card-text"> <%= item.description %>  </p>
-          <%= link_to "En savoir plus", item_path(item.id), class: 'btn btn-primary btn-sm' %>
+          <%= link_to "En savoir plus", item_path(item.to_param), class: 'btn btn-primary btn-sm' %>
           <%if user_signed_in? == true%>
             <%= link_to "Ajouter au panier", cart_items_path(cart_id: Cart.where(user_id: current_user.id).last.id, item_id: item.id), class:"btn btn-success btn-sm", method: "post" %>
           <%end%>
