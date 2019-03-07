@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   def show
     @user = User.friendly.find(params[:id])
     @orders = Order.where(user_id: params[:id])
+    puts '$' * 60
+    puts params.inspect
   end
 
   def edit
