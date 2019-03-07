@@ -1,8 +1,12 @@
+<div class="bg-primary d-inline-block mb-4 d-flex align-items-center justify-content-center" style="height: 260px; width: 100%;">
+  <h1 class="text-white text-center">Superr</h1>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col">
       <div class="container">
-    
+      <div class="border mb-5 p-5">
         <h5>Nom : <%= @user.first_name %></h5>
           <h5>Prénom : <%= @user.last_name %></h5>
         <h5>Email : <%= @user.email %></h5>
@@ -14,7 +18,7 @@
         <%end%>
         <%= link_to "Modifier mes informations", edit_user_registration_path, class:"btn btn-outline-primary m-5 " %>
         </div>
-
+      </div>
     </div>
       
       <div class="col">
