@@ -1,5 +1,5 @@
 <div class="bg-primary d-inline-block mb-4 d-flex align-items-center justify-content-center" style="height: 260px; width: 100%;">
-  <h1 class="text-white text-center">Superr</h1>
+  <h1 class="text-white text-center border border-white py-3 px-4">Mon profil</h1>
 </div>
 
 <div class="container">
@@ -7,9 +7,14 @@
     <div class="col">
       <div class="container">
       <div class="border mb-5 p-5">
-        <h5>Nom : <%= @user.first_name %></h5>
-          <h5>Prénom : <%= @user.last_name %></h5>
-        <h5>Email : <%= @user.email %></h5>
+        <h2 class="h3">Bienvenue sur votre espace personnel</h2>
+        <hr>
+        <div class="d-inline-block rounded-circle overflow-auto mb-4" style="height: 200px; width: 200px;">
+          
+        </div>
+        <h4>Prénom : <%= @user.last_name %></h4>
+        <h4>Nom : <%= @user.first_name %></h4>
+        <h4>Email : <%= @user.email %></h4>
         <h5>Avatar actuel</h5>
         <%if @user.avatar.attached?%>
           <%= image_tag @user.avatar, alt: 'avatar' %>
@@ -31,5 +36,3 @@
       </div>
     </div>
   </div>
-
-  
