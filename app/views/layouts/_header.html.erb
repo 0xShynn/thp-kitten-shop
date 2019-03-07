@@ -6,11 +6,20 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <%if user_signed_in?%>
+        <span class="navbar-text">Vous êtes connecté en tant que <%=current_user.email%></span>
+    <%end%>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <%= link_to 'Boutique', items_path, class: 'nav-link' %>
       </li>
-
+       <%if user_signed_in? %>
+        <%if is_admin(current_user) %>
+          <li class="nav-item">
+            <%= link_to "Panneau d'administration", admins_path, class: 'nav-link' %>
+          </li>
+        <%end%>
+      <%end%>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Connexion
@@ -29,7 +38,8 @@
             <%= link_to user_cart_path(user_id: current_user.id, id: Cart.where(user_id: current_user.id).last), class: "nav-link" do %>
               <i class="fas fa-shopping-cart mr-2"></i> 
               Panier
-            <% end %>
+        <% end %>
+          
           </li>
         <% end %>
       </li>

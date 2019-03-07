@@ -1,0 +1,25 @@
+<h2>Editer la commande</h2>
+<br />
+<h3>Produits</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">N°</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Suppression</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@cart_items.each do |cart_item|%>
+    <tr>
+      <th scope="row"><%=cart_item.id%></th>
+      <td><%=cart_item.item.name%></td>
+      <td><%=cart_item.item.price%></td>
+      <td><%= link_to "Supprimer l'article",admin_cart_item_path(cart_item), method: "delete"%></td>
+    </tr>
+     <%end%>
+  </tbody>
+</table>
+
+<%= link_to "Retour au panneau d'administration", admins_path, class: "btn btn-success"%>

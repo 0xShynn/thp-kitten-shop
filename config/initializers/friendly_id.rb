@@ -30,7 +30,7 @@ FriendlyId.defaults do |config|
   # Uncomment this to use friendly finders in all models. By default, if
   # you wish to find a record by its friendly id, you must do:
   #
-  #    MyModel.friendly.find('foo')
+  #    MyModel.find('foo')
   #
   # If you uncomment this, you can do:
   #

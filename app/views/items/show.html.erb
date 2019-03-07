@@ -2,8 +2,7 @@
 <div class="container my-5 text-center">
   <h1><%= @item.name %></h1>
   <p>Description  : <%= @item.description %> </p>
-  <p><img src="<%=@item.img_link%>" alt="Kitten" style="width:auto;"> <p>
-  <p class="h3 mb-5">Prix : <%=@item.price%> </p>
+  <p class="h3 mb-5">Prix : <%=@item.price %> </p>
 
   <h3>Photo </h3>
 <%if @item.photo.attached?%>
@@ -11,11 +10,21 @@
 <%else%>
   <p>=== Il n'y a pas encore d'image lié à cet item ===</p>
 <%end%>
-<%= link_to "Modifier les informations du produit", edit_admin_item_path(@item), class:"btn btn-success btn-sm" %>
-  <%if user_signed_in? == true%>
+<%if user_signed_in? == true%>
+  <%if is_admin(current_user)%>
+    <%= link_to "Modifier les informations du produit", edit_admin_item_path(@item), class:"btn btn-warning" %>
+  <%end%>
     <%= link_to "Ajouter au panier",cart_items_path(cart_id: Cart.find_by(user_id: current_user.id), item_id: @item.id), class:"btn btn-success", method: "post" %>
   <%end%>
   <br>
   <br>
+
+  <% if is_admin(current_user) %>
+    <%= form_tag item_photos_path(@item), multipart: true do %>
+      <%= file_field_tag :photo %>
+      <%= submit_tag "mettre à jour" %>
+    <% end %>
+  <% end %>
+
 <%= link_to "Retourner sur la page d'accueil", root_path, class:"btn btn-outline-secondary"%>
 </div>

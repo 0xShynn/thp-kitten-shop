@@ -5,13 +5,13 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.friendly.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   private
 
   def to_param
-    @item = Item.friendly.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
 end 

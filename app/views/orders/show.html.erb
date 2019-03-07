@@ -3,3 +3,5 @@
 <%@cart_items.each do |cart_item| %>
  <p> <%=cart_item.item.name%>  <%=cart_item.item.price%></p> 
 <%end%>
+
+<%= link_to "Retourner sur le profil",user_path(params[:user_id]), class:"btn btn-success"%>

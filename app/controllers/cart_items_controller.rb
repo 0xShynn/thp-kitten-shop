@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+  before_action :authenticate_user!
   
   def show
     puts params.inspect
@@ -15,7 +16,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item = CartItem.friendly.find(params[:cart_item_id])
+    @cart_item = CartItem.find(params[:cart_item_id])
     @cart_item.destroy 
     redirect_to user_cart_path(Cart.find_by(user_id: current_user.id))
     

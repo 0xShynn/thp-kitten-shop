@@ -25,20 +25,20 @@ class Admin::ItemsController < ApplicationController
   end 
 
   def saving_photo
-    @item = Item.friendly.find(@item.id)
+    @item = Item.find(@item.id)
     @item.photo.attach(params[:photo])
   end
 
 
   def edit
-    @item = Item.friendly.find(params[:id])
+    @item = Item.find(params[:id])
   end 
 
   def update
-    @item = Item.friendly.find(params[:id])
-
-    if @item.update(post_params)
+    @item = Item.find(params[:id])
     @item.photo.attach(params[:photo])
+    
+    if @item.update(post_params)
     redirect_to @item
     flash[:success]= "Bravo"
     else

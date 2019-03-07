@@ -1,27 +1,39 @@
-<div class="container">
+<div class="">
+  <img src="https://via.placeholder.com/1440x580" class="w-100" alt="Responsive image">
+  <!-- <%= image_tag Faker::LoremFlickr.image("600x300") %> -->
+</div>
 
-    <div class="admin">
-      <%= link_to "Ajouter un produit", new_admin_item_path, class:"btn btn-success btn-sm" %>
-    </div>
+<div class="container p-5">
 
+    <h2 class="text-center my-5">La sélection du mois</h2>
     <div class="row">
-    <% @items.each do |item| %>
-      <div class="col-md-4">
-        <div class="card mb-4 text-center">
-          <div class="card-body">
+      <% @items.each do |item| %>
+        <div class="col-md-4">
+          <div class="card mb-4 text-center">
+            <div class="card-body">
 
 
+              <%if item.photo.attached? %>
+                <%= link_to item_path(item), class: "" do %>
+                  <%= image_tag item.thumbnail_300, alt: 'avatar', class: 'w-100 mb-4' %>
+                <% end %>
+              <% else %>
+                <div class="bg-primary d-inline-block mb-4" style="height: 300px; width: 100%;"></div>
+              <% end %>
 
-          <h5 class="card-title mt-3"><%= item.name %></h5>
-          <p class="card-text"><%= item.price %> $</p>
-          <p class="card-text"> <%= item.description %>  </p>
-          <%= link_to "En savoir plus", item_path(item.to_param), class: 'btn btn-primary btn-sm' %>
-          <%if user_signed_in? == true%>
-            <%= link_to "Ajouter au panier", cart_items_path(cart_id: Cart.where(user_id: current_user.id).last.id, item_id: item.id), class:"btn btn-success btn-sm", method: "post" %>
-          <%end%>
+              <h5 class="h3 text-black"><%= item.name %></h5>
+              <p class="item-price text-black h2 text-muted font-weight-bold"><%= item.price %> €</p>
+              <p class=""> <%= item.description %> </p>
+              <%= link_to "En savoir plus", item_path(item), class: "btn btn-light w-100" %>
+              <%if user_signed_in? == true%>
+                <%= link_to "Ajouter au panier", cart_items_path(cart_id: Cart.where(user_id: current_user.id).last.id, item_id: item.id), class:"btn btn-outline-primary w-100", method: "post" %>
+              <%end%>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
     </div>
+
 </div>
+
+<div class="">

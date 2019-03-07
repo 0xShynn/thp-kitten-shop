@@ -2,8 +2,10 @@ class UsersController < ApplicationController
   # before_action :authenticate_user!, only: [:show]
   
   def show
-    @user = User.friendly.find(params[:id])
+    @user = User.find(params[:id])
     @orders = Order.where(user_id: params[:id])
+    puts '$' * 60
+    puts params.inspect
   end
 
   def edit
@@ -13,6 +15,7 @@ class UsersController < ApplicationController
   def update
      @user = current_user
       if @user.update_attributes(user_params)
+        puts "Wewewewe !"
         redirect_to user_path
     else
       render 'edit'
@@ -26,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def to_param
-    @user = User.friendly.find(params[:id])
+    @user = User.find(params[:id])
     edit_user_path(user)
   end 
 
