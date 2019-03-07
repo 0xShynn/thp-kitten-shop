@@ -1,26 +1,52 @@
-<h2>Récaputilatif de ma commande</h2>
+<div class="bg-primary p-5">
+  <div class="container bloc-600 p-5 bg-light">
+
+    <h2 class="text-center">Récaputilatif <br>de ma commande</h2>
 
 
-<% @cart_items.each do |cart_item| %>
-  <p><%= cart_item.item.id %> <%= cart_item.item.name %> <%= cart_item.item.price %> 
-<% end %>
+  <table class="table table-bordered table-responsive-sm h5">
+    <thead class="">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@cart_items.each do |cart_item|%>
+      <tr>
+        <th scope="row"> <%= cart_item.id %> </th>
+        <td class="h4"><%= cart_item.item.name %></td>
+        <td class="font-weight-bold text-black"><%= cart_item.item.price %> €</td>
+      </tr>
+      <%end%>
+      <tr>
+        <th scope="row"></th>
+        <td colspan="1" class="h3">Total</td>
+        <td class="h3"><%=@order.total%> €</td>
+      </tr>
+    </tbody>
+  </table>
 
-<%= form_tag user_orders_path(@order, user_id: current_user.id) do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    <label class="amount">
-      <span>Payer <%=@order.total%> €</span>
-    </label>
-  </article>
+    <%= form_tag user_orders_path(@order, user_id: current_user.id) do %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+      </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      <div class="text-center p-4">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="Ma commande de photos de chatons"
           data-amount="<%= @order.total * 100 %>"
           data-currency="eur"
-          data-locale="auto"></script>
-<% end %>
+          data-locale="auto">
+        </script>
+      </div>
+    <% end %>
+
+  </div>
+</div>
