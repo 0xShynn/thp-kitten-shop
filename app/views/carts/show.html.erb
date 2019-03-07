@@ -1,39 +1,6 @@
 <div class="bg-primary d-inline-block mb-4 d-flex align-items-center justify-content-center" style="height: 260px; width: 100%;">
-  <h1 class="text-white text-center">Superr</h1>
 </div>
 
-<%@cart_items.each do |cart_item|%>
-  
-  <div class="row m-2">
-  
-    <div class="card bg-secondary col-sm-3">
-      <div class="card-body text-center">
-        <img src="<%= cart_item.item %>" class="img-rounded" alt="Kitten" style="width:50px;">
-      </div>
-    </div>
-
-    <div class="card bg-secondary col-sm-4">
-      <div class="card-body text-center">
-        <p class="card-text"><%=cart_item.item.name%> </p>
-      </div>
-    </div>
-
-    <div class="card bg-secondary col-sm-2">
-      <div class="card-body text-center">
-        <p class="card-text"><%=cart_item.item.price%></p>
-      </div>
-    </div>
-
-    <div class="card bg-secondary col-sm-2">
-      <div class="card-body text-center">
-        <p class="card-text"><%=cart_item.quantity%></p>
-      </div>
-    </div>
-
-    <div class="card bg-secondary col-sm-3">
-      <div class="card-body text-center">
-        <p class="card-text"><%= link_to 'Retirer du panier', cart_item_path(cart_item_id: cart_item.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer cet article ?' } %></p>
-      </div>
     </div>
 
   <div class="title mb-5 text-center">
@@ -43,36 +10,33 @@
   <table class="table table-bordered table-hover table-responsive-sm h5">
     <thead class="">
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Photo</th>
         <th scope="col">Nom</th>
         <th scope="col">Description</th>
-        <th scope="col">X</th>
         <th scope="col">Prix unitaire</th>
+         <th scope="col">Quantité</th>
         <th scope="col">Prix total</th>
+         <th scope="col">Suppression</th>
       </tr>
     </thead>
     <tbody>
       <%@cart_items.each do |cart_item|%>
       <tr>
-        <th scope="row"> <%= cart_item.id %> </th>
         <td>
           <div class="bg-primary d-inline-block mb-4" style="height: 140px; width: 140px;"></div>
         </td>
         <td class="h4"><%= cart_item.item.name %></td>
         <td class="font-weight-normal"><%= cart_item.item.description %></td>
-        <td> <%= link_to 'Retirer du panier', cart_item_path(cart_item_id: cart_item.id), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
-        <td class="">prix unit</td>
-        <td class="font-weight-bold text-black"><%= cart_item.item.price %> €</td>
-      </tr>
-      <%end%>
-      <tr>
-        <th scope="row"></th>
-        <td colspan="4" class="text-right h3">Total</td>
-        <td class="h3"><%=@total%> €</td>
+        <td><%= cart_item.item.price %>€ </td>
+        <td class="font-weight-bold text-black"><%= cart_item.quantity %></td>
+        <td  class="h3"><%= cart_item.quantity * cart_item.item.price%> €</td>
+        <td> <%= link_to 'Retirer du panier', cart_item_path(cart_item_id: cart_item.id), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ces articles ?' } %> </td>
+        <%end%>
       </tr>
     </tbody>
   </table>
+
+  <center><p class="h1">TOTAL : <%=@total%> €</p></center>
 
   <div class="d-flex justify-content-end py-3">
     <%= link_to 'Continuer mes achats', root_path, class: 'btn btn-outline-secondary mr-4'%>

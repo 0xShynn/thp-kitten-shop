@@ -19,12 +19,22 @@
         <p>Description  : <%= @item.description %> </p>
         <p class="h3 mb-5">Prix : <%=@item.price %> €</p>
 
-        <% if user_signed_in? == true %>
-          <% if is_admin(current_user) %>
-            <%= link_to "Modifier les informations du produit", edit_admin_item_path(@item), class:"btn btn-outline-warning mb-4" %>
-          <% end %>
-          <%= link_to "Ajouter au panier",cart_items_path(cart_id: Cart.find_by(user_id: current_user.id), item_id: @item.id), class:"btn btn-primary mb-4", method: "post" %>
+     <%= form_for @cart_item = CartItem.new, :url => cart_items_path(cart_id: Cart.find_by(user_id: current_user.id), item_id: @item.id) do |f| %>
+
+  <div class="field">
+    <%= f.label :quantite %><br>
+    <%= f.text_field :quantity, placeholder: 1,  class: "form-control"%>
+  </div>
+
+      <%if user_signed_in? == true%>
+        <%if is_admin(current_user)%>
+          <%= link_to "Modifier les informations du produit", edit_admin_item_path(@item), class:"btn btn-warning" %>
+        <%end%>
+          <div class="btn btn-success">
+            <%= f.submit%>
+          </div>
         <% end %>
+      <%end%>
 
         <%= link_to "Retourner sur la page d'accueil", root_path, class:"btn btn-outline-secondary"%>
       </div>
@@ -32,33 +42,7 @@
 
   </div>
 
-  <h1><%= @item.name %></h1>
-  <p>Description  : <%= @item.description %> </p>
-  <p class="h3 mb-5">Prix : <%=@item.price %> </p>
 
-  <h3>Photo </h3>
-<%if @item.photo.attached?%>
-  <%= image_tag @item.photo, alt: 'photo' %>
-<%else%>
-  <p>=== Il n'y a pas encore d'image lié à cet item ===</p>
-<%end%>
-
-<%= form_for @cart_item = CartItem.new, :url => cart_items_path(cart_id: Cart.find_by(user_id: current_user.id), item_id: @item.id) do |f| %>
-
-  <div class="field">
-    <%= f.label :quantite %><br>
-    <%= f.text_field :quantity, placeholder: 1,  class: "form-control"%>
-  </div>
-
-<%if user_signed_in? == true%>
-  <%if is_admin(current_user)%>
-    <%= link_to "Modifier les informations du produit", edit_admin_item_path(@item), class:"btn btn-warning" %>
-  <%end%>
-    <div class="btn btn-success">
-      <%= f.submit%>
-    </div>
-  <% end %>
-<%end%>
   <br>
   <br>
 
@@ -68,6 +52,3 @@
       <%= submit_tag "mettre à jour" %>
     <% end %>
   <% end %>
-
-<%= link_to "Retourner sur la page d'accueil", root_path, class:"btn btn-outline-secondary"%>
-</div>
