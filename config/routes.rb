@@ -11,13 +11,8 @@ Rails.application.routes.draw do
   end
   
   resources :cart_items, only: [:new, :create, :destroy]
-<<<<<<< HEAD
- 
-  resources :items, only: [:index, :show] do
-=======
   
   resources :items, only: [:index, :show, :new, :edit], path: 'article' do
->>>>>>> delivery
     resources :photos, only: [:create]
   end
   
