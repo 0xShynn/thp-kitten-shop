@@ -4,5 +4,6 @@ FactoryBot.define do
     password { Faker::Ethereum.address }
     first_name { Faker::Superhero.prefix }
     last_name { Faker::BackToTheFuture.character }
+    
   end
 end
