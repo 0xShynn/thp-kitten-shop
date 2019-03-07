@@ -17,27 +17,25 @@ RSpec.describe User, type: :model do
     end
 
     it "is a string for first_name" do
-      expect @user.first_name.class == String
-      expect(@user).to allow_value('Joe').for(:first_name)
-      expect(@user).to_not allow_value(nil).for(:first_name)
+      expect @user.first_name.class == String 
     end
 
     it "is a string for last_name" do
       expect @user.last_name.class == String
-      expect(@user).to allow_value('Black').for(:last_name)
-      expect(@user).to_not allow_value(nil).for(:last_name)
     end
 
     it "is a string for email" do
       expect @user.email.class == String
-      expect(@user).to allow_value('example@coucou.com').for(:email)
-      expect(@user).to_not allow_value('coucoucou').for(:email)
-      expect(@user).to_not allow_value(nil).for(:email)
     end
   end
 
   context "associations" do
-  	it { expect(@user).to have_many(:orders) }
-  	it { expect(@user).to have_many(:items) }
+
+    describe "orders" do
+      it "should have_many orders" do
+               order = Order.create
+        expect(@user.orders.include?(order)).to eq(false)
+    end
   end
+end
 end
