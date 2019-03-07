@@ -1,7 +1,9 @@
 <div class="container">
 
     <div class="admin">
-      <%= link_to "Ajouter un produit", new_admin_item_path, class:"btn btn-success btn-sm" %>
+      <% if user_signed_in? %>
+        <%= link_to "Ajouter un produit", new_admin_item_path, class:"btn btn-success btn-sm" %>
+      <%end%>
     </div>
 
     <div class="row">
