@@ -15,11 +15,11 @@ class Admin::ItemsController < ApplicationController
     description: params[:description])
   
     if @item.save
-      flash[:success]="Ton produit a bien ete ajoutee"
+      flash[:success]="Ton produit a bien ete ajoutée"
       saving_photo
       redirect_to item_path(@item.to_param)
     else
-      flash.now[:error]="Ton produit n'a pas pu etre sauvegardee"
+      flash.now[:error]="Ton produit n'a pas pu etre sauvegardée"
       render :new  
     end
   end 
@@ -36,7 +36,7 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.photo.attach(params[:photo])
+    # @item.photo.attach(params[:photo])
     
     if @item.update(post_params)
     redirect_to @item
