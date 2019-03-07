@@ -1,17 +1,4 @@
 class User < ApplicationRecord
-  
-  # Customized slugs
-  extend FriendlyId
-  friendly_id :slug_candidates, use: :slugged
-  
-  # Try building a slug based on the following fields in
-  # increasing order of specificity.
-  def slug_candidates
-    [
-      [:first_name, :last_name],
-      [:first_name, :last_name, :id],
-    ]
-  end  
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

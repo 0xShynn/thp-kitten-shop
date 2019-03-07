@@ -25,13 +25,13 @@ class Admin::ItemsController < ApplicationController
   end 
 
   def saving_photo
-    @item = Item.friendly.find(@item.id)
+    @item = Item.find(@item.id)
     @item.photo.attach(params[:photo])
   end
 
 
   def edit
-    @item = Item.friendly.find(params[:id])
+    @item = Item.find(params[:id])
   end 
 
   def update
