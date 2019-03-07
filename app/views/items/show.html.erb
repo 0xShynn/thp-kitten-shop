@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :quantite %><br>
-    <%= f.number_field :quantity, placeholder: Integer(1),  class: "form-control"%>
+    <%= f.number_field :quantity,  class: "form-control", min: 1%>
   </div>
 
       <%if user_signed_in? == true%>
