@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items, path: 'articles'
     resources :orders, only: [:index, :edit, :destroy], path: 'commandes'
-    resources :cart_items, only: [:destroy]
+    resources :cart_items, only: [:destroy], path: 'contenu-panier'
   end 
   
   resources :admins, only: [:index]
