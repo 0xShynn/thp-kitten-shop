@@ -12,7 +12,7 @@ class CartItemsController < ApplicationController
      if params[:cart_item].blank? 
        quantity = 1
      else
-       quantity = params[:cart_item][:quantity]
+       quantity = params[:cart_item][:quantity].to_i
      end
     cart_item = CartItem.new(cart_item_params)
     cart_item.quantity = quantity
