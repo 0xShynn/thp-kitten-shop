@@ -8,8 +8,7 @@ module ApplicationHelper
     end
   end
 
-  def is_admin?
-    user_signed_in? && current_user.is_admin == true
+  def is_admin(user)
+    user.is_admin == true
   end
-
 end
