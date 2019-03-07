@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   belongs_to :cart
   has_many :cart_items, through: :cart
 
+  after_create :send_order_email_to_user, :send_order_email_to_admin
 
   def find_current_user_cart(current_user)
       return Cart.where(user: current_user).last
@@ -24,11 +25,15 @@ class Order < ApplicationRecord
     Cart.new(user_id: current_user.id)
   end
 
-  # Sending a mail to the user 
-  after_create :sending_email_order_to_user
-
-  def sending_email_order_to_user
-    UserMailer.notif_order_email(self).deliver_now!
+  # Sending an email to a user for his order
+  def send_order_email_to_user
+    UserMailer.order_email_to_user(self).deliver_now!
   end
+
+  # Sending and email to the admin whenever a user validates a new order
+  def send_order_email_to_admin
+    AdminMailer.order_email_to_admin(self).deliver_now!
+  end
+
 
 end

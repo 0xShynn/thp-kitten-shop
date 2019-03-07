@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
  
-  def welcome_email(user)
+  def welcome_email_to_user(user)
 
     @user = user
 
@@ -12,10 +12,9 @@ class UserMailer < ApplicationMailer
     )
   end
 
-  def notif_order_email(order)
+  def order_email_to_user(order)
     @order = order
     
-
     mail(
       from: "a.nhek@icloud.com",
       to: order.user.email, 

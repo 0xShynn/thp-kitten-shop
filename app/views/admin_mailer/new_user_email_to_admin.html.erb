@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>L'utilisateur <%= @user.first_name %> s'est inscrit sur le site !</h1>
+    
+    <h2>Ses informations</h2>
+    <ul>
+      <li>Prénom : <%= @user.first_name %></li>
+      <li>Nom : <%= @user.last_name %></li>
+      <li>Email : <%= @user.email %></li>
+    </ul>
+
+    <p> À très vite sur www.kitten-shop.fr !</p>
+  </body>
+</html>

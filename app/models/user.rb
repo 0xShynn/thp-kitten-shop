@@ -1,4 +1,18 @@
 class User < ApplicationRecord
+  
+  # Customized slugs
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+  
+  # Try building a slug based on the following fields in
+  # increasing order of specificity.
+  def slug_candidates
+    [
+      [:first_name, :last_name],
+      [:first_name, :last_name, :id],
+    ]
+  end  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,11 +22,10 @@ class User < ApplicationRecord
   has_many :orders
   has_many :items, through: :orders
   has_one_attached :avatar
-
-  before_create :default_values
-  after_create :welcome_send
- 
   
+  before_create :default_values
+  after_create :send_welcome_email_to_user, :send_new_user_email_to_admin
+
   # Création du cart associé à l'utilisateur en même temps que l'inscription
   after_create do 
     id = User.all.last.id
@@ -20,9 +33,12 @@ class User < ApplicationRecord
   end
   
 
-  
-  def welcome_send
-    UserMailer.welcome_email(self).deliver_now!
+  def send_welcome_email_to_user
+    UserMailer.welcome_email_to_user(self).deliver_now!
+  end
+
+  def send_new_user_email_to_admin
+    AdminMailer.new_user_email_to_admin(self).deliver_now!
   end
 
   private
@@ -30,8 +46,6 @@ class User < ApplicationRecord
   def default_values
     self.is_admin ||= false
   end
-
-
-
+  
 end
 

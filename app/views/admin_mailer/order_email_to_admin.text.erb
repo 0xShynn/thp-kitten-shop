@@ -1,0 +1,6 @@
+L'utilisateur <%= @order.user.first_name %> vient de passer une commande sur Kitten-Shop !
+Voici un résumé de sa commande n° <%= @order.id %> :
+<% @order.cart_items.each do |cart_item| %>
+  <%= cart_item.item.name %>
+  <%= cart_item.item.description %>
+<% end %>
