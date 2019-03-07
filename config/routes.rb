@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   resources :cart_items, only: [:new, :create, :destroy]
  
-  resources :items, only: [:index, :show, :new, :edit] do
+  resources :items, only: [:index, :show] do
     resources :photos, only: [:create]
   end
 

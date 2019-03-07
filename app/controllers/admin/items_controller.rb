@@ -36,9 +36,9 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-
-    if @item.update(post_params)
     @item.photo.attach(params[:photo])
+    
+    if @item.update(post_params)
     redirect_to @item
     flash[:success]= "Bravo"
     else
