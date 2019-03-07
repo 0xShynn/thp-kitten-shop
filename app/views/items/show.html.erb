@@ -19,7 +19,7 @@
   <br>
   <br>
 
-  <% if is_admin? %>
+  <% if is_admin(current_user) %>
     <%= form_tag item_photos_path(@item), multipart: true do %>
       <%= file_field_tag :photo %>
       <%= submit_tag "mettre à jour" %>
