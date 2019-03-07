@@ -16,7 +16,7 @@ class Order < ApplicationRecord
   def total_amount_order(cart_items)
       total = 0.00
       cart_items.each do |cart_item|
-      total = cart_item.item.price + total
+      total = cart_item.item.price * cart_item.quantity + total
       end
       return total
   end

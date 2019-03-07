@@ -2,7 +2,39 @@
   <h1 class="text-white text-center">Superr</h1>
 </div>
 
-<div class="container p-5">
+<%@cart_items.each do |cart_item|%>
+  
+  <div class="row m-2">
+  
+    <div class="card bg-secondary col-sm-3">
+      <div class="card-body text-center">
+        <img src="<%= cart_item.item %>" class="img-rounded" alt="Kitten" style="width:50px;">
+      </div>
+    </div>
+
+    <div class="card bg-secondary col-sm-4">
+      <div class="card-body text-center">
+        <p class="card-text"><%=cart_item.item.name%> </p>
+      </div>
+    </div>
+
+    <div class="card bg-secondary col-sm-2">
+      <div class="card-body text-center">
+        <p class="card-text"><%=cart_item.item.price%></p>
+      </div>
+    </div>
+
+    <div class="card bg-secondary col-sm-2">
+      <div class="card-body text-center">
+        <p class="card-text"><%=cart_item.quantity%></p>
+      </div>
+    </div>
+
+    <div class="card bg-secondary col-sm-3">
+      <div class="card-body text-center">
+        <p class="card-text"><%= link_to 'Retirer du panier', cart_item_path(cart_item_id: cart_item.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer cet article ?' } %></p>
+      </div>
+    </div>
 
   <div class="title mb-5 text-center">
     <h2>Mon panier</h2>
