@@ -4,22 +4,22 @@ Rails.application.routes.draw do
 
   root 'items#index'
  
-  resources :users, only: [:show, :new, :create, :edit, :update] do
-    resources :carts, only: [:show], path: 'panier'
-    resources :orders, only: [:new, :show, :create], path: 'commande'
+  resources :users, only: [:show, :new, :create, :edit, :update], path: 'utilisateurs' do
+    resources :carts, only: [:show], path: 'paniers'
+    resources :orders, only: [:new, :show, :create], path: 'commandes'
     resources :avatars, only: [:create]
   end
   
-  resources :cart_items, only: [:new, :create, :destroy]
+  resources :cart_items, only: [:new, :create, :destroy], path: 'contenu-panier'
   
-  resources :items, only: [:index, :show, :new, :edit], path: 'article' do
+  resources :items, only: [:index, :show, :new, :edit], path: 'articles' do
     resources :photos, only: [:create]
   end
   
   namespace :admin do
-    resources :items
-    resources :orders, only: [:index, :edit, :destroy]
-    resources :cart_items, only: [:destroy]
+    resources :items, path: 'articles'
+    resources :orders, only: [:index, :edit, :destroy], path: 'commandes'
+    resources :cart_items, only: [:destroy], path: 'contenu-panier'
   end 
   
   resources :admins, only: [:index]
