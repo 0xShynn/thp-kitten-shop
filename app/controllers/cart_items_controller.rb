@@ -5,17 +5,15 @@ class CartItemsController < ApplicationController
     puts params.inspect
   end
 
-  # def new 
-  #   @cart_item = CartItem.new
-  # end
 
   def create
+    puts params.inspect
     cart = Cart.where(user_id: current_user.id).last
-    if params[:cart_item].blank? 
-      quantity = 1
-    else
-      quantity = params[:cart_item][:quantity]
-    end
+     if params[:cart_item].blank? 
+       quantity = 1
+     else
+       quantity = params[:cart_item][:quantity]
+     end
     cart_item = CartItem.new(cart_item_params)
     cart_item.quantity = quantity
     cart_item.save
