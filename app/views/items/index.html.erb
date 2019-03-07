@@ -26,7 +26,7 @@
               <p class=""> <%= item.description %> </p>
               <%= link_to "En savoir plus", item_path(item), class: "btn btn-light w-100" %>
               <%if user_signed_in? == true%>
-                <%= link_to "Ajouter au panier", cart_items_path(cart_id: Cart.where(user_id: current_user.id).last.id, item_id: item.id), class:"btn btn-outline-primary w-100", method: "post" %>
+                <%= link_to "Ajouter au panier", cart_items_path(cart_id: Cart.where(user_id: current_user.id).last.id, item_id: item.id, quantity: 1), class:"btn btn-outline-primary w-100", method: "post" %>
               <%end%>
             </div>
           </div>

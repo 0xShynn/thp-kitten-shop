@@ -10,12 +10,23 @@
 <%else%>
   <p>=== Il n'y a pas encore d'image lié à cet item ===</p>
 <%end%>
+
+<%= form_for @cart_item = CartItem.new, :url => cart_items_path(cart_id: Cart.find_by(user_id: current_user.id), item_id: @item.id) do |f| %>
+
+  <div class="field">
+    <%= f.label :quantite %><br>
+    <%= f.text_field :quantity, placeholder: 1,  class: "form-control"%>
+  </div>
+
 <%if user_signed_in? == true%>
   <%if is_admin(current_user)%>
     <%= link_to "Modifier les informations du produit", edit_admin_item_path(@item), class:"btn btn-warning" %>
   <%end%>
-    <%= link_to "Ajouter au panier",cart_items_path(cart_id: Cart.find_by(user_id: current_user.id), item_id: @item.id), class:"btn btn-success", method: "post" %>
-  <%end%>
+    <div class="btn btn-success">
+      <%= f.submit%>
+    </div>
+  <% end %>
+<%end%>
   <br>
   <br>
 
