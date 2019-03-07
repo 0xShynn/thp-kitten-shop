@@ -33,6 +33,10 @@ class User < ApplicationRecord
   def default_values
     self.is_admin ||= false
   end
-  
+
+  def is_admin?
+    user_signed_in? && current_user
+  end
+    
 end
 

@@ -9,14 +9,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" rel="stylesheet" integrity="sha384-hVpXlpdRmJ+uXGwD5W6HZMnR9ENcKVRn855pPbuI/mwPIEKAuKgTKgGksVGmlAvt" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Rubik', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Overpass:400,700,900', media: 'all', 'data-turbolinks-track' => true %>
+    
   </head>
 
   <body>
   
     <%= render 'layouts/header' %>
     <%= render 'layouts/flash' %>
-    <div class="container my-5">
+    <div class="">
       <%= yield %>
     </div>
 

@@ -7,4 +7,9 @@ module ApplicationHelper
       when 'alert' then "alert-warning"
     end
   end
+
+  def is_admin?
+    user_signed_in? && current_user.is_admin == true
+  end
+
 end
