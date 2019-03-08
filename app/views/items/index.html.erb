@@ -1,8 +1,31 @@
-<div class="bg-primary d-inline-block mb-4" style="height: 600px; width: 100%;"></div>
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag 'yiqun-tang-1330197-unsplash', class:"d-block w-100" %>
+      <div class="carousel-caption d-none d-md-block">
+        <a href="#ici" class="btn btn-primary mb-5"><span class="h3 text-white">Wesh la mif'</span></a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag 'jerry-wang-1163827-unsplash', class:"d-block w-100" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag 'bastien-herve-649018-unsplash', class:"d-block w-100" %>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
 <div class="container p-5">
 
-    <h2 class="text-center my-5">La sélection du mois</h2>
+    <h2 class="text-center my-5" id="ici">La sélection du mois</h2>
     <div class="row">
       <% @items.each do |item| %>
         <div class="col-md-4">

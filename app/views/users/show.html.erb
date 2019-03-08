@@ -1,5 +1,6 @@
-<div class="bg-primary d-inline-block mb-4 d-flex align-items-center justify-content-center p-5" style="height: 260px; width: 100%;">
-  <h1 class="text-white text-center border border-white py-3 px-4">Mon compte</h1>
+<div class="d-inline-block mb-4 d-flex align-items-center justify-content-center">
+  <%= image_tag 'nirzar-pangarkar-217994-unsplash', class:"w-100 position-relative" %>
+  <h1 class="text-white text-center border border-white py-3 px-4 position-absolute">Mon Compte</h1>  
 </div>
 
 <div class="container">
@@ -10,7 +11,7 @@
       <div class="border mb-5 p-5">
         <h2 class="h3">Bienvenue sur votre espace personnel</h2>
         <hr>
-        <div class="d-inline-block rounded-circle overflow-auto mb-4" style="height: 200px; width: 200px;"></div>
+        <!-- <div class="d-inline-block rounded-circle overflow-auto mb-4" style="height: 200px; width: 200px;"></div> -->
         <h4>Prénom : <%= @user.last_name %></h4>
         <h4>Nom : <%= @user.first_name %></h4>
         <h4>Email : <%= @user.email %></h4>
@@ -18,7 +19,7 @@
         <%if @user.avatar.attached?%>
           <%= image_tag @user.avatar, alt: 'avatar' %>
         <%else%>
-          <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+          <p>Oui oui</p>
         <%end%>
         <%= link_to "Modifier mes informations", edit_user_registration_path, class:"btn btn-outline-primary m-5 " %>
         </div>
@@ -26,7 +27,7 @@
     </div>
       
     <div class="col-6">
-      <div class="container">
+      <div class="container p-5">
         <h5> Mes commandes précédentes </h5>
         <%@orders.each do |order|%>
           <h3><%=link_to "Commande n° #{order.id}", user_order_path(user_id: @user.id, id: order.id) %> </h3>
