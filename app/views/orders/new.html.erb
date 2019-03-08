@@ -8,6 +8,7 @@
     <thead class="">
       <tr>
         <th scope="col">Nom</th>
+        <th scope="col">Quantité</th>
         <th scope="col" class="text-right">Prix</th>
       </tr>
     </thead>
@@ -15,11 +16,13 @@
       <%@cart_items.each do |cart_item|%>
       <tr>
         <td class="h4"><%= cart_item.item.name %></td>
-        <td class="font-weight-bold text-black text-right"><%= cart_item.item.price %> €</td>
+        <td class="h3 text-right"><%= cart_item.quantity %></td>
+        <td class="font-weight-bold text-black text-right"><%= cart_item.item.price * cart_item.quantity %> €</td>
       </tr>
       <%end%>
       <tr>
         <td colspan="1" class="h3">Total</td>
+        <td class="h3 text-right"><%= @cart_items.sum(:quantity) %></td>
         <td class="h3 text-right"><%=@order.total%> €</td>
       </tr>
     </tbody>
