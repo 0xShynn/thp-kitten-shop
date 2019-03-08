@@ -9,6 +9,5 @@ module ApplicationHelper
   end
 
   def is_admin(user)
-    user.is_admin == true
   end
 end
