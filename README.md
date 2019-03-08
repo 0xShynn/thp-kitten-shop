@@ -1,24 +1,23 @@
-# README
+# README DES CHATS
+## Kitten-Shop par : Mallaury @Mallau, Laurane @Laurane, Antonin @Antonin et Raph @Raph
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+C'est un site qui vend des photos de chat
+* Version en production : https://kitten-shop-project.herokuapp.com/
 
-Things you may want to cover:
+### Fonctionnement
 
-* Ruby version
+Comme d'hab :
 
-* System dependencies
+* git clone
 
-* Configuration
+* Tu vas dedans 
 
-* Database creation
+* bundle install
 
-* Database initialization
+* rails db:migrate
 
-* How to run the test suite
+* rails db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+Pour le compte admin : admin@admin.com et password : admin01
 
-* Deployment instructions
-
-* ...
+Ensuite, désolé, mais il faudra créer un article via le panneau d'administration pour tester le reste ! Sinon, tout marche sur la version en ligne ! 
