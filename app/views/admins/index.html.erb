@@ -1,32 +1,38 @@
-<h2>Panneau d'administration</h2>
-<br />
-<h3><%= link_to "Ajouter un produit", new_admin_item_path, class: "text-success" %></h3>
-<br />
-<h3>Utilisateurs inscrits : <%=@users.length%></h3> 
-<br />
-<h3>Commandes passées : <%=@orders.length%></h2>
+<div class="d-inline-block mb-4 d-flex align-items-center justify-content-center">
+  <%= image_tag 'freddie-marriage-40645-unsplash', class:"w-100 position-relative" %>
+  <h1 class="text-white text-center border border-white py-3 px-4 position-absolute">Admin Board</h1>  
+</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">N°</th>
-      <th scope="col">Client</th>
-      <th scope= "col">Date</th>
-      <th scope="col">Montant</th>
-      <th scope="col">Détails</th>
-      <th scope="col">Suppression</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%@orders.each do |order|%>
+<div class="container p-5">
+<div class="top-info text-center p-5 border">
+  <%= link_to "Ajouter un produit", new_admin_item_path, class: "btn btn-success mb-5" %>
+  <h3>Utilisateurs inscrits : <%=@users.length%></h3> 
+  <h3>Commandes passées : <%=@orders.length%></h2>  
+</div>
+
+  <table class="table">
+    <thead>
       <tr>
-        <th scope="row"><%=order.id%></th>
-        <td><%=order.user.first_name%></td>
-        <td><%=order.created_at.strftime("Commandé le %m/%d/%Y à %I:%M%p") %>
-        <td><%=order.total%></td>
-        <td><%= link_to "Voir le détail", edit_admin_order_path(order)%></td>
-        <td><%= link_to "Supprimer la commande", admin_order_path(order), method: "delete"%></td>
+        <th scope="col">N°</th>
+        <th scope="col">Client</th>
+        <th scope= "col">Date</th>
+        <th scope="col">Montant</th>
+        <th scope="col">Détails</th>
+        <th scope="col">Suppression</th>
       </tr>
-    <%end%>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <%@orders.each do |order|%>
+        <tr>
+          <th scope="row"><%=order.id%></th>
+          <td><%=order.user.first_name%></td>
+          <td><%=order.created_at.strftime("Commandé le %m/%d/%Y à %I:%M%p") %>
+          <td><%=order.total%></td>
+          <td><%= link_to "Voir le détail", edit_admin_order_path(order)%></td>
+          <td><%= link_to "Supprimer la commande", admin_order_path(order), method: "delete"%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+
+</div>
