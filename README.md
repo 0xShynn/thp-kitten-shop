@@ -19,3 +19,5 @@ Comme d'hab :
 * rails db:seed
 
 Pour le compte admin : admin@admin.com et password : admin01
+
+Ensuite, désolé, mais il faudra créer un article via le panneau d'administration pour tester le reste ! Sinon, tout marche sur la version en ligne ! 
